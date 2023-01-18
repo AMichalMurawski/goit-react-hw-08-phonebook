@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
 import { filterChange } from 'redux/filterSlice';
 import { useDispatch } from '../../../node_modules/react-redux/es/exports';
 import css from './Filter.module.css';
 
 export const Filter = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleChange = e => {
-    dispatch(filterChange(e.currentTarget.value))
-  }
+    dispatch(filterChange(e.currentTarget.value));
+  };
 
   return (
     <label className={css.label}>
@@ -24,4 +23,4 @@ export const Filter = () => {
       />
     </label>
   );
-}
+};

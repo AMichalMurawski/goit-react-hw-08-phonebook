@@ -3,8 +3,6 @@ import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import React from 'react';
 
-const LOCAL_STORAGE_CONTACTS = 'phonebookContacts';
-
 export const App = () => {
   return (
     <div
@@ -28,7 +26,7 @@ export const App = () => {
       >
         Phonebook
       </h2>
-      <ContactForm/>
+      <ContactForm />
       <h2
         style={{
           fontWeight: 700,
@@ -38,8 +36,8 @@ export const App = () => {
       >
         Contacts{' '}
       </h2>
-      <Filter/>
-      <ContactList/>
+      <Filter />
+      <ContactList />
     </div>
   );
-}
+};
