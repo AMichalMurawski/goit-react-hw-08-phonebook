@@ -14,7 +14,7 @@ export const ContactItem = ({ contact }) => {
   return (
     <>
       <p className={css.contact}>
-        {contact.name}: {contact.number} ({contact.id})
+        {contact.name}: {contact.number}
       </p>
       <button
         className={css.button}
