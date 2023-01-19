@@ -1,10 +1,12 @@
 import css from './ContactForm.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/operations';
 import React from 'react';
+import { selectContacts } from 'redux/selectors';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,6 +15,11 @@ export const ContactForm = () => {
       name: form.name.value,
       number: form.number.value,
     };
+    for (const contact of contacts) {
+      if (value.name === contact.name) {
+        return
+      }
+    }
     dispatch(addContact(value));
     form.reset();
   }
