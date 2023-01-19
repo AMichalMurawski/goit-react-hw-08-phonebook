@@ -36,33 +36,11 @@ const contactsSlice = createSlice({
         [deleteContact.fulfilled](state, action) {
             state.isLoading = false;
             state.error = null;
-            const index = state.items.findIndex(contact => contact.id === action.payload);
+            const index = state.items.findIndex(contact => contact === action.payload);
             state.items.splice(index, 1);
         },
         [deleteContact.rejected]: handleRejected,
     },
-    reducers: {
-        // addContact: {
-        //     reducer(state, action) {
-        //         state.push(action.payload)
-        //     },
-        //     prepare(text) {
-        //         return {
-        //             payload: {
-        //                 id: nanoid(),
-        //                 name: text.name,
-        //                 number: text.number,
-        //             }
-        //         }
-        //     }
-        // },
-        deleteContact: {
-            reducer(state, action) {
-                const index = state.findIndex(contact => contact.id === action.payload);
-                state.splice(index, 1);
-            },
-        }
-    }
 })
 
 export const contactsReducer = contactsSlice.reducer;
