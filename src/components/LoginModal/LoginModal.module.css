@@ -1,0 +1,63 @@
+.login {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  float: right;
+}
+
+.iconLogin {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.backdrop {
+  opacity: 0;
+  visibility: hidden;
+  padding: 20px;
+  background-color: transparent;
+  position: absolute;
+  right: -20px;
+  top: 0;
+  transition: opacity 100ms ease-in, visibility 100ms ease-in;
+}
+
+.iconLogin:focus ~ .backdrop,
+.iconLogin:hover ~ .backdrop {
+  opacity: 1;
+  visibility: visible;
+}
+
+.backdrop:focus,
+.backdrop:hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background-color: rgb(237, 235, 235);
+  transition: opacity 100ms ease-in, visibility 100ms ease-in;
+}
+
+.btn {
+  padding: 5px;
+  font-weight: 400;
+  font-size: 12px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.btn:focus,
+.btn:hover {
+  box-shadow: inset 0 0 2px;
+}
+
+.btn:active {
+  background-color: rgba(255, 255, 255, 0.879);
+}

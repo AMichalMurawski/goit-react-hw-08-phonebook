@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
 import { SharedLayout } from 'components/SharedLayout/SharedLayout';
+import Register from 'pages/Register';
 
 const Login = lazy(() => import('./pages/Login'));
 const Contacts = lazy(() => import('./pages/Contacts'));
@@ -20,6 +21,7 @@ export const App = () => {
       <Route path="/" element={<SharedLayout />}>
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
