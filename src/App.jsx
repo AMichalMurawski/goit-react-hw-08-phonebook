@@ -2,7 +2,7 @@ import { lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/contactsThunk';
 import { SharedLayout } from 'components/SharedLayout/SharedLayout';
 import Register from 'pages/Register';
 

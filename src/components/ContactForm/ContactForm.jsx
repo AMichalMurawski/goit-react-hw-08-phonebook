@@ -1,6 +1,6 @@
 import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contactsThunk';
 import React from 'react';
 import { selectContacts } from 'redux/selectors';
 
@@ -8,7 +8,7 @@ export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
     const value = {
@@ -17,12 +17,12 @@ export const ContactForm = () => {
     };
     for (const contact of contacts) {
       if (value.name === contact.name) {
-        return
+        return;
       }
     }
     dispatch(addContact(value));
     form.reset();
-  }
+  };
 
   return (
     <form
@@ -63,4 +63,4 @@ export const ContactForm = () => {
       </button>
     </form>
   );
-}
+};
