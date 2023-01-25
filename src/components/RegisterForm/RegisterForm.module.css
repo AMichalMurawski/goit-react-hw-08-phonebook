@@ -1,0 +1,8 @@
+.passwordCorrect{
+    border: 1px solid black;
+}
+
+.passwordIncorrect{
+    background-color: red;
+    border:1px solid red;
+}

@@ -27,7 +27,6 @@ const Contacts = () => {
         Contacts
       </h2>
       <Filter />
-      <ContactList />
     </div>
   );
 };

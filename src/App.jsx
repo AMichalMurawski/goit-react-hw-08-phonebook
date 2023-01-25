@@ -27,20 +27,23 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         {isLoggedIn ? (
-          <Navigate to="/login" />
+          <Route path="*" element={<Navigate to="/login" />} />
         ) : (
           <Route index element={<HomePage />} />
         )}
         <Route
           path="/login"
           element={
-            <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
           }
         />
         <Route
           path="/register"
           element={
-            <RestrictedRoute redirectTo="/tasks" component={<RegisterPage />} />
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
           }
         />
         <Route
