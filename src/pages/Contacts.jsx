@@ -1,8 +1,18 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchContacts } from 'redux/contacts/contactsThunk';
+
 const { ContactForm } = require('components/ContactForm/ContactForm');
 const { ContactList } = require('components/ContactList/ContactList');
 const { Filter } = require('components/Filter/Filter');
 
 const Contacts = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   return (
     <div
       style={{
@@ -27,6 +37,7 @@ const Contacts = () => {
         Contacts
       </h2>
       <Filter />
+      <ContactList />
     </div>
   );
 };

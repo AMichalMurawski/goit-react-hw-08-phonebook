@@ -13,7 +13,7 @@ export const ContactForm = () => {
     const form = e.target;
     const value = {
       name: form.name.value,
-      number: form.number.value,
+      number: form.number.value.toString(),
     };
     for (const contact of contacts) {
       if (value.name === contact.name) {
