@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authThunk';
 import css from './RegisterForm.module.css';
