@@ -19,29 +19,38 @@ export const RegisterForm = () => {
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <label className={css.label}>
-        Username
-        <input
-          className={css.input}
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        />
-      </label>
-      <label className={css.label}>
-        E-mail
-        <input className={css.input} type="email" name="email" required />
-      </label>
-      <label className={css.label}>
-        Password
-        <input className={css.input} type="password" name="password" required />
-      </label>
-      <button className={css.button} type="submit">
-        Register
-      </button>
-    </form>
+    <main>
+      <section className="section">
+        <form className={css.form} onSubmit={handleSubmit}>
+          <label className={css.label}>
+            Username
+            <input
+              className={css.input}
+              type="text"
+              name="name"
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              required
+            />
+          </label>
+          <label className={css.label}>
+            E-mail
+            <input className={css.input} type="email" name="email" required />
+          </label>
+          <label className={css.label}>
+            Password
+            <input
+              className={css.input}
+              type="password"
+              name="password"
+              required
+            />
+          </label>
+          <button className={css.button} type="submit">
+            Register
+          </button>
+        </form>
+      </section>
+    </main>
   );
 };

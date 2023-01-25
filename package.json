@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://AMichalMurawski.github.io/goit-react-hw-08-phonebook/",
   "dependencies": {
+    "@chakra-ui/layout": "^2.1.15",
     "@chakra-ui/react": "^2.4.9",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
