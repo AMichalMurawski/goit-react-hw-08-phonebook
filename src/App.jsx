@@ -2,10 +2,11 @@ import { lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/contacts/contactsThunk';
-import { SharedLayout } from 'components/SharedLayout/SharedLayout';
+import { SharedLayout } from 'components/SharedLayout';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { RestrictedRoute } from 'components/RestrictedRoute';
+import { refreshUser } from 'redux/auth/authThunk';
+import { useAuth } from 'hooks';
 
 const HomePage = lazy(() => import('./pages/Home'));
 const LoginPage = lazy(() => import('./pages/Login'));
@@ -14,15 +15,22 @@ const ContactsPage = lazy(() => import('./pages/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
+  const { isRefreshing, isLoggedIn } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        <Route index element={<HomePage />} />
+        {isLoggedIn ? (
+          <Navigate to="/login" />
+        ) : (
+          <Route index element={<HomePage />} />
+        )}
         <Route
           path="/login"
           element={
