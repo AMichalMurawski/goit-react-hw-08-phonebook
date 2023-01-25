@@ -4,7 +4,6 @@ import icons from 'images/icons.svg';
 import css from './UserMenu.module.css';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/authThunk';
-import { useReducer } from 'react';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();

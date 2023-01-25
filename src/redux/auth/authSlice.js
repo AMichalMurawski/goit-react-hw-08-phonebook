@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { act } from 'react-dom/test-utils';
 import { register, logIn, logOut, refreshUser } from './authThunk';
 
 const initialState = {
