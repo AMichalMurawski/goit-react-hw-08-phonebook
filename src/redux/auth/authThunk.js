@@ -3,12 +3,19 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
+const refreshToken = token => {
+  axios.interceptors.request.use(
+    config => {
+      if (token) {
+        config.headers.Authorization = 'Bearer ' + token;
+      }
+      console.log(config);
+      return config;
+    },
+    error => {
+      return Promise.reject(error);
+    }
+  );
 };
 
 export const register = createAsyncThunk(
@@ -16,7 +23,7 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.post('users/signup', credentials);
-      setAuthHeader(response.data.token);
+      refreshToken(response.data.token);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -29,7 +36,7 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.post('users/login', credentials);
-      setAuthHeader(response.data.token);
+      refreshToken(response.data.token);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -39,8 +46,8 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    const response = await axios.post('users/logout');
-    clearAuthHeader();
+    await axios.post('users/logout');
+    refreshToken('');
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -56,7 +63,7 @@ export const refreshUser = createAsyncThunk(
     }
 
     try {
-      setAuthHeader(persistedToken);
+      refreshToken(persistedToken);
       const response = await axios.get('users/current');
       return response.data;
     } catch (error) {

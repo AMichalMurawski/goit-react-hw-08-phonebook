@@ -15,7 +15,7 @@ const ContactsPage = lazy(() => import('./pages/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing, isLoggedIn } = useAuth();
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -26,11 +26,12 @@ export const App = () => {
   ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        {isLoggedIn ? (
-          <Route path="*" element={<Navigate to="/login" />} />
-        ) : (
-          <Route index element={<HomePage />} />
-        )}
+        <Route
+          index
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<HomePage />} />
+          }
+        />
         <Route
           path="/login"
           element={
@@ -48,11 +49,9 @@ export const App = () => {
         />
         <Route
           path="/contacts"
-          element={
-            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
-          }
+          element={<PrivateRoute redirectTo="/" component={<ContactsPage />} />}
         />
-        <Route path="*" element={<Navigate to="/login" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
   );
