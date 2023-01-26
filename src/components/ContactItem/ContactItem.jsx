@@ -12,14 +12,15 @@ export const ContactItem = ({ contact }) => {
   };
 
   return (
-    <>
-      <p className={css.contact}>
-        {contact.name}: {contact.number}
-      </p>
-      <button className={css.button} type="button" onClick={handleDelete}>
-        Delete
-      </button>
-    </>
+    <tr>
+      <td className={css.contact + ' paragraph'}>{contact.name}:</td>
+      <td className={css.number + ' paragraph'}> {contact.number}</td>
+      <td className={css.delete + ' paragraph'}>
+        <button className={css.button} type="button" onClick={handleDelete}>
+          Delete
+        </button>
+      </td>
+    </tr>
   );
 };
 

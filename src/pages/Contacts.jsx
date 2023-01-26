@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/contactsThunk';
-import { selectContacts } from 'redux/contacts/selectors';
+import css from './Contacts.module.css';
 
 const { ContactForm } = require('components/ContactForm/ContactForm');
 const { ContactList } = require('components/ContactList/ContactList');
@@ -16,34 +16,17 @@ const Contacts = () => {
   }, [dispatch]);
 
   return (
-    <div
-      style={{
-        margin: '0 auto',
-        display: 'flex',
-        width: '60%',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'start',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
+    <section className="section">
       <Helmet>
         <title>Phonebook app</title>
       </Helmet>
-      <ContactForm />
-      <h2
-        style={{
-          fontWeight: 700,
-          paddingTop: 40,
-          paddingBottom: 40,
-        }}
-      >
-        Contacts
-      </h2>
-      <Filter />
-      <ContactList />
-    </div>
+      <div className={css.container}>
+        <ContactForm />
+        <h2 className="title">Contacts</h2>
+        <Filter />
+        <ContactList />
+      </div>
+    </section>
   );
 };
 

@@ -12,14 +12,16 @@ export const ContactList = () => {
   const isLoading = useSelector(selectIsLoading);
 
   return (
-    <ul className={css.list}>
+    <>
       {isLoading && <div>Loading list...</div>}
-      {!!contacts &&
-        contacts.map(contact => (
-          <li className={css.item} key={contact.id}>
-            <ContactItem contact={contact} />
-          </li>
-        ))}
-    </ul>
+      <table className={css.table}>
+        <tbody>
+          {!!contacts &&
+            contacts.map(contact => (
+              <ContactItem key={contact.id} contact={contact} />
+            ))}
+        </tbody>
+      </table>
+    </>
   );
 };

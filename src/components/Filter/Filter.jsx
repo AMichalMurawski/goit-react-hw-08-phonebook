@@ -10,10 +10,10 @@ export const Filter = () => {
   };
 
   return (
-    <label className={css.label}>
+    <label className={css.label + ' paragraph'}>
       Find contacts by name
       <input
-        className={css.input}
+        className={css.input + ' paragraph'}
         type="text"
         name="name"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"

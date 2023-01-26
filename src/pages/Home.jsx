@@ -9,7 +9,7 @@ const Home = () => {
       </Helmet>
       <section className="section">
         <div className={css.welcome}>
-          <h2 className={css.title}>Welcome in Phonebook app</h2>
+          <h2 className="title">Welcome in Phonebook app</h2>
           <p className={css.paragraph}>
             Please log in or register to use the phonebook.
           </p>
