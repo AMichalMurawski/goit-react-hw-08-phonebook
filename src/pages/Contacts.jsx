@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { Helmet } from 'react-helmet';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/contactsThunk';
+import { selectContacts } from 'redux/contacts/selectors';
 
 const { ContactForm } = require('components/ContactForm/ContactForm');
 const { ContactList } = require('components/ContactList/ContactList');
@@ -26,6 +28,7 @@ const Contacts = () => {
         color: '#010101',
       }}
     >
+      <Helmet>Phonebook app</Helmet>
       <ContactForm />
       <h2
         style={{

@@ -9,6 +9,7 @@ const refreshToken = token => {
       if (token) {
         config.headers.Authorization = 'Bearer ' + token;
       }
+      console.log('authorization');
       return config;
     },
     error => {
