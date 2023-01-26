@@ -13,7 +13,6 @@ export const ContactList = () => {
 
   return (
     <>
-      {isLoading && <div>Loading list...</div>}
       <table className={css.table}>
         <tbody>
           {!!contacts &&
@@ -22,6 +21,7 @@ export const ContactList = () => {
             ))}
         </tbody>
       </table>
+      {isLoading && <div>Loading list...</div>}
     </>
   );
 };
