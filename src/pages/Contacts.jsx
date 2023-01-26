@@ -28,7 +28,9 @@ const Contacts = () => {
         color: '#010101',
       }}
     >
-      <Helmet>Phonebook app</Helmet>
+      <Helmet>
+        <title>Phonebook app</title>
+      </Helmet>
       <ContactForm />
       <h2
         style={{

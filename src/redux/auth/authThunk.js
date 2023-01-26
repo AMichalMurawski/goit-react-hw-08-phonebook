@@ -3,19 +3,20 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
+let tokenGlobal = '';
+
+axios.interceptors.request.use(
+  config => {
+    config.headers.Authorization = 'Bearer ' + tokenGlobal;
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
+
 const refreshToken = token => {
-  axios.interceptors.request.use(
-    config => {
-      if (token) {
-        config.headers.Authorization = 'Bearer ' + token;
-      }
-      console.log('authorization');
-      return config;
-    },
-    error => {
-      return Promise.reject(error);
-    }
-  );
+  tokenGlobal = token;
 };
 
 export const register = createAsyncThunk(
@@ -58,6 +59,7 @@ export const refreshUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
+    console.log('persistedToken:', persistedToken);
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }

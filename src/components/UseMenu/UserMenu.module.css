@@ -60,6 +60,7 @@
 .backdrop:hover {
     opacity: 1;
     visibility: visible;
+    cursor: pointer;
 }
 
 .modal {

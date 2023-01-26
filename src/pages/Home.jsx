@@ -1,4 +1,5 @@
-const { Helmet } = require('react-helmet');
+import css from './Home.module.css';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
   return (
@@ -6,8 +7,14 @@ const Home = () => {
       <Helmet>
         <title>Phonebook app</title>
       </Helmet>
-      <h2>Welcome in Phonebook app</h2>
-      <p>Please log in or register to use the phonebook.</p>
+      <section className="section">
+        <div className={css.welcome}>
+          <h2 className={css.title}>Welcome in Phonebook app</h2>
+          <p className={css.paragraph}>
+            Please log in or register to use the phonebook.
+          </p>
+        </div>
+      </section>
     </>
   );
 };
