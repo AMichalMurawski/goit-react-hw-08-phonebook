@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import css from './SharedLayout.module.css';
-import { UserMenu } from 'components/UseMenu/UserMenu';
+import { UserMenu } from 'components/UserMenu/UserMenu';
 
 export const SharedLayout = () => {
   return (

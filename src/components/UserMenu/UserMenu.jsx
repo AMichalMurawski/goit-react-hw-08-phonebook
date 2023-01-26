@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useAuth } from 'hooks';
+import { useAuth } from 'hooks/useAuth';
 import icons from 'images/icons.svg';
 import css from './UserMenu.module.css';
 import { useDispatch } from 'react-redux';

@@ -7,7 +7,7 @@ import {
 } from 'redux/contacts/selectors';
 import { ContactItem } from 'components/ContactItem/ContactItem';
 
-export const ContactList = () => {
+const ContactList = () => {
   const contacts = useSelector(selectVisibleContacts);
   const isLoading = useSelector(selectIsLoading);
 
@@ -25,3 +25,5 @@ export const ContactList = () => {
     </>
   );
 };
+
+export default ContactList;

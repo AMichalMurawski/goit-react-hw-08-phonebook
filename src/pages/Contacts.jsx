@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, lazy } from 'react';
 import { Helmet } from 'react-helmet';
 import { useDispatch } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/contactsThunk';
 import css from './Contacts.module.css';
 
-const { ContactForm } = require('components/ContactForm/ContactForm');
-const { ContactList } = require('components/ContactList/ContactList');
-const { Filter } = require('components/Filter/Filter');
+const ContactForm = lazy(() => import('../components/ContactForm/ContactForm'));
+const ContactList = lazy(() => import('../components/ContactList/ContactList'));
+const Filter = lazy(() => import('../components/Filter/Filter'));
 
 const Contacts = () => {
   const dispatch = useDispatch();
